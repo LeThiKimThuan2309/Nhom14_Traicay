@@ -40,24 +40,18 @@
 				<h2 class="text-center">Quản Lý Người Dùng</h2>
 			</div>
 			<div class="panel-body">
-
-            <a href="TL_Them-moi.php"> 
-                <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Sản Phẩm</button>
-            </a>
                 <table class="table table-bordered table-hover">
                     <thead align="center">
                         <tr>
                             <th width="50px">STT</th>
                             <th>Tên Người Dùng</th>
                             <th>Gmail</th>
-                            <th>PassWord</th>
                             <th width="50px">Xóa</th>
-                            <th width="150px">Phân Quyền</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
-                        //Lay danh sach danh muc tu database
+                        //lấy danh sách người dùng từ database
                         $limit = 1; //số sản phẩm/1 trang
                         $page = 1;
                         if(isset($_GET['page']))
@@ -69,11 +63,9 @@
                             $page = 1;
                         }
                         $firstIndex = ($page-1)*$limit;
-                        //Lay danh sach danh muc tu database
-                        $sql = 'SELECT product.id, product.title, product.price, 
-                            product.thumbnail, product.updated_at, category.name category_name 
-                            FROM product left join category on product.id_category = category.id '.' limit '.$firstIndex.','.$limit;
-                        $productList = executeResult($sql); 
+                        //lấy danh sách người dùng từ database
+                        $sql = 'select * from nguoimua';
+                        $NguoiMuaList = executeResult($sql); 
                         $sql = 'select count(id) as total from product where 1';
                         $countResult = executeSingleResult($sql);
 
@@ -85,25 +77,19 @@
                         }
 
                         $index = 1;
-                        foreach ($productList as $item) 
+                        foreach ($NguoiMuaList as $item) 
                         {
                             echo '<tr>
                                     <td>'.($index++).'</td>
-                                    <td><img style="max-width: 100px;" src="'.$item['thumbnail'].'"></td>
-                                   
-                                    <td>'.$item['category_name'].'</td>
-                                    <td>'.$item['updated_at'].'</td>
+                                    <td>'.$item['ten_kh'].'</td>
+                                    <td>'.$item['email'].'</td>
                                     <td>
                                         <button class="btn btn-danger" 
                                             onclick="deleteProduct('.$item['id'].')">Xoá</button>
                                     </td>
-                                    <td align="center">
-                                        <button class="btn btn-danger" 
-                                            onclick="deleteCategory('.$item['id'].')">Quyền</button>
-                                    </td>
                                     </tr>';
                         }
-                        ?>
+                    ?>
                     </tbody>
                 </table>
                 <!----------Bai toán phân trang--------------------------------------------------------->
@@ -112,7 +98,9 @@
 		</div>
 	</div>
     <script type="text/javascript">
-		function deleteProduct(id) {
+		function deleteProduct(id) 
+        //ajax - lệnh post
+        {
 			var option = confirm('Bạn có chắc chắn muốn xoá sản phẩm này không?')
 			if(!option) {
 				return;
@@ -120,7 +108,7 @@
 
 			console.log(id)
 			//ajax - lenh post
-			$.post('TL_ajax.php', {
+			$.post('user_ajax.php', {
 				'id': id,
 				'action': 'delete'
 			}, function(data) {

@@ -10,8 +10,8 @@ if (!empty($_POST)) {
 				if (isset($_POST['id'])) {
 					$id = $_POST['id'];
 
-					$sql = 'delete from category where id = '.$id;
-					execute($sql);
+					$sql = 'delete from nguoimua where id = '.$id;
+					execute($sql); // thư viện dùng dùng
 				}
 				break;
 		}
