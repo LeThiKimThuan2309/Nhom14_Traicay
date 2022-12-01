@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    // session_start();
 
     include "thuvien.php";
     if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=[];
@@ -58,9 +58,9 @@
 </head>
 <body>
     <div class="boxcenter">
-        <div class="row mb header">
+         <div class="row mb header">
             <h1> SIÊU THỊ TRÁI CÂY</h1>
-        </div>
+        </div> 
         <div class="row mb menu">
             <ul>
                 <li><a href="trangchu.php">Trang chủ</a></li>
@@ -68,8 +68,7 @@
                 <li><a href="#">Liên hệ</a></li>
                 <li><a href="#">Góp ý</a></li>
                 <li><a href="#">Hỏi đáp</a></li>
-            </ul>
-        </div>
+            </ul> 
         <div class="row mb ">
             <div class="boxtrai mr" id="hoadon">
                 <from action="bill.php" method="post">
@@ -110,7 +109,7 @@
                         <!-- <tr>
                             <td>1</td>
                             <td><img src="images/1.jpg" alt=""></td>
-                            <td>Đồng hồ</td>
+                            <td>Trái cây</td>
                             <td>10</td>
                             <td>1</td>
                             <td>
@@ -161,7 +160,7 @@
                         </li>
                     </div>
                 </div>
-                <div class="row mb">
+                <!-- <div class="row mb">
                     <div class="boxtitle">DANH MỤC</div>
                     <div class="boxcontent2 menudoc">
                         <ul>
@@ -181,14 +180,14 @@
                             <input type="text" name="" id="">
                         </form>
                     </div>
-                </div>
+                </div> -->
                 
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mb footer">
-        </div>
+        <!-- <div class="row mb footer">
+        </div> -->
     </div>
 
 </body>

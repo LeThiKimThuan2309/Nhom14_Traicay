@@ -1,4 +1,14 @@
 <?php
+function taodonhang($Ten, $DiaChi, $DienThoai, $Email, $Tonggiatri, $Phuongthuctt){
+    $conn=ketnoidb();
+        $sql = "INSERT INTO hoadon (Ten, DiaChi, DienThoai, Email, Tonggiatri, Phuongthuctt)
+        VALUES ('$Ten', '$DiaChi', '$DienThoai', '$Email', '$Tonggiatri', '$Phuongthuctt')";
+        // use exec() because no results are returned
+        $conn->exec($sql);
+      
+      $conn = null;
+}
+
 function showgiohang(){
         if(isset($_SESSION['giohang'])&&(is_array($_SESSION['giohang']))){
             if(sizeof($_SESSION['giohang'])>0){
