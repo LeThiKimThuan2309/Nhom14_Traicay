@@ -1,9 +1,10 @@
 <?php
     session_start();
-    include("../../BaiTapLon/db/config.php");
+    include("../../sql/config.php");
     //them
     //tru
-    //xoa
+    //xoa san pham
+    //xoa tat ca
     //themsanpham vao gio hang
     if(isset($_POST['themgiohang'])){
         // session_destroy();
