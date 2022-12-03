@@ -115,7 +115,8 @@
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
         
-            $mail->setFrom('wedbanhang.hehe@gmail.com', 'Trai Cay');
+            $mail->setFrom('wedbanhang.hehe@gmail.com', 'Trai Cay
+            ');
             $mail->addAddress($email);
             $mail->isHTML(true);
             $mail->Subject = 'User and password for app Ban Trai Cay ';
